@@ -1,0 +1,21 @@
+.sidebar{
+    width: 25%;
+    min-width: 100px;
+    border-right: dotted 1px grey;
+    padding: 10px;
+}
+.folder{
+    padding-top: 20px;
+    border: solid 1px lightblue;
+    text-align: center;
+    background-color: white;
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    height: 60px;
+}
+.folder-highlighted, .active{
+    background-color: lightblue;
+    border: solid 1px lightblue;
+    text-align: center;
+}
