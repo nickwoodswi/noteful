@@ -12,6 +12,14 @@
     line-height: 50px
 }
 
+.add-components{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: lightgrey;
+    text-align: center;
+}
+
 .App{
     display: flex;
     flex-direction: row;
@@ -36,6 +44,28 @@
 .window{
     width: 75%;
     min-width: 220px;
+}
+
+.add-folder{
+    margin: 10px;
+}
+#folder-name {
+    margin: 10px;
+}
+
+.add-note{
+    margin: 10px;
+}
+#note-name{
+    margin: 10px;
+}
+#note-content{
+    margin: 10px;
+    width: 200px;
+    height: 100px;
+}
+.select-folder{
+    margin: 10px;
 }
 
 .note-preview{

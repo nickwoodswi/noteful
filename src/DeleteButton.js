@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Context from './Context'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class DeleteButton extends Component {
 
@@ -19,19 +20,16 @@ class DeleteButton extends Component {
     }
 
     render() {
-        return(
-            <Context.Consumer>
-                {value => {
-                    
-                    return(
-                        <Link to='/'>
-                        <button type="button" onClick={() => this.deleteNote(this.props.id)}>DELETE</button>
-                        </Link>
-                    )
-                }}
-            </Context.Consumer>
+        return( 
+            <Link to='/'>
+                <button type="button" onClick={() => this.deleteNote(this.props.id)}>DELETE</button>
+            </Link>
         )
     }
+}
+
+DeleteButton.propTypes = {
+    value: PropTypes.string
 }
 
 export default DeleteButton
