@@ -50,7 +50,7 @@ class App extends Component {
   }
   
   handleAddFolder(id, folderName) {
-    let newFolder = {'id': id, 'name': folderName}
+    let newFolder = {'id': id, 'folder_name': folderName}
     fetch(`http://localhost:9090/folders/`, {
       method: 'POST',
       body: JSON.stringify(newFolder),
@@ -71,19 +71,19 @@ class App extends Component {
 
     let noteName = e.target['note-name'].value
     let noteContent = e.target['note-content'].value
-    let noteId = Math.random().toString(36).substring(7)
-
-    let folderId = e.target['folder'].value
-
+    //let noteId = Math.random().toString(36).substring(7)
+    let folderIdStr = e.target['folder'].value
+    let folderId = parseInt(folderIdStr, 10)
     let timeStamp = new Date() 
 
-    this.handleAddNote(noteName, noteContent, noteId, folderId, timeStamp);
+    this.handleAddNote(noteName, noteContent, folderId, timeStamp);
 
     e.target.reset()
   }
 
-  handleAddNote(noteName, noteContent, noteId, folderId, timeStamp) {
-    let newNote = {'id': noteId, 'name': noteName, 'modified': timeStamp, 'folderId': folderId, 'content': noteContent}
+  handleAddNote(noteName, noteContent, folderId, timeStamp) {
+    let newNote = {'note_name': noteName, 'date_added': timeStamp, 'folder': folderId, 'content': noteContent}
+    console.log(newNote)
     fetch(`http://localhost:9090/notes/`, {
       method: 'POST',
       body: JSON.stringify(newNote),
@@ -144,8 +144,11 @@ class App extends Component {
                 clickHandler={this.selectFolder} />
               <Notes 
                 key={this.state.notes.id}
-                notes={this.state.notes.filter(note => 
-                  note.folderId === routeProps.match.params.id)} />
+                notes={
+                  this.state.notes.filter(note => note.folder == 
+                  routeProps.match.params.id)
+                } 
+                  />
               </>
               )} />
 
@@ -158,7 +161,7 @@ class App extends Component {
               <Notes 
                 key={this.state.notes.id}
                 notes={this.state.notes.filter(note =>
-                  note.id === routeProps.match.params.id)} />
+                  note.id == routeProps.match.params.id)} />
               </>
               )} />
             

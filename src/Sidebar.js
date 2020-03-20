@@ -18,7 +18,7 @@ class Sidebar extends Component {
                                 id={folder.id}
                                 key={folder.id}
                                 className="folder" >
-                                    {folder.name}
+                                    {folder.folder_name}
                             </NavLink>
                         )
                     })}

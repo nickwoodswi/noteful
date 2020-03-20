@@ -22,7 +22,7 @@ class DeleteButton extends Component {
     render() {
         return( 
             <Link to='/'>
-                <button type="button" onClick={() => this.deleteNote(this.props.id)}>DELETE</button>
+                <div className="delete-button"><button type="button" onClick={() => this.deleteNote(this.props.id)}>DELETE</button></div>
             </Link>
         )
     }

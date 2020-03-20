@@ -5,6 +5,7 @@ import DeleteButton from './DeleteButton'
 import PropTypes from 'prop-types'
 
 class Notes extends Component {
+
     displayNote() {
         document.getElementById('note-content').classList.toggle('note-content')
     }
@@ -20,13 +21,13 @@ class Notes extends Component {
                                 key={note.id + '-link'}
                                 id={note.id}
                                 onClick={() => this.displayNote()}>
-                                    <h3>{note.name}</h3>
-                                    <h4>Date modified: {note.modified}</h4>
+                                    <h3>{note.note_name}</h3>
+                                    <h4>Date modified: {note.date_added}</h4>
                             </Link>
                             <DeleteButton 
                                 key={note.id + '-delete'}
                                 id={note.id} />
-                            <div id="note-content" className="note-content-hidden" key={note.id + '-content'}><p>{note.content}</   p></div>
+                            <div id="note-content" className="note-content-hidden" key={note.id + '-content'}><p>{note.content}</p></div>
                         </div>
                     )
                 })}

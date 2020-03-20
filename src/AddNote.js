@@ -33,7 +33,7 @@ render() {
                         className="select-folder">
                         {this.props.folders.map((folder, idx) => {
                             return(
-                                <option key={idx} value={folder.id} id="folder-name">{folder.name}</option>
+                                <option key={idx} value={folder.id} id="folder-name">{folder.folder_name}</option>
                             )
                         })}
                     </select>
