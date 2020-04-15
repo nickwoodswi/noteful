@@ -21,13 +21,13 @@ class App extends Component {
 
   componentDidMount() {
 
-    fetch('http://localhost:9090/folders')
+    fetch(API_ENDPOINT+'/folders')
       .then(response => response.json())
       .then(data => this.setState({
         folders: data
       }))
 
-    fetch('http://localhost:9090/notes')
+    fetch(API_ENDPOINT+'/notes')
       .then(response => response.json())
       .then(data => this.setState({
         notes: data
@@ -51,7 +51,7 @@ class App extends Component {
   
   handleAddFolder(id, folderName) {
     let newFolder = {'id': id, 'folder_name': folderName}
-    fetch(`http://localhost:9090/folders/`, {
+    fetch(API_ENDPOINT+`/folders/`, {
       method: 'POST',
       body: JSON.stringify(newFolder),
       headers: {
@@ -84,7 +84,7 @@ class App extends Component {
   handleAddNote(noteName, noteContent, folderId, timeStamp) {
     let newNote = {'note_name': noteName, 'date_added': timeStamp, 'folder': folderId, 'content': noteContent}
     console.log(newNote)
-    fetch(`http://localhost:9090/notes/`, {
+    fetch(API_ENDPOINT+`/notes/`, {
       method: 'POST',
       body: JSON.stringify(newNote),
       headers: {

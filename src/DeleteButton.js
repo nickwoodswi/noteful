@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import Context from './Context'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { API_ENDPOINT } from './config'
 
 class DeleteButton extends Component {
 
     static contextType = Context
 
     deleteNote(id) {
-        fetch(`http://localhost:9090/notes/${id}`, {
+        fetch(API_ENDPOINT+`/notes/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
